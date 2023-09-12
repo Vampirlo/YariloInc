@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: "Fira Code";
+    src: url("../fonts/FiraCode-Regular.ttf");
+}
+h1 {
+    color: white;
+}
+h2 {
+    color: white;
+}
+h3 {
+    color: white;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+a.my-link {
+    color: red;
+    text-decoration: none;
+}
+body {
+    background: #111111;
+    font-family: "Fira Code", monospace;
+    height: 100%;
+}
+/*хз надо wrapper, content или нет, для опускания футера вниз и вообще на что это влияет*/
+wrapper {
+    position: relative;
+    min-height: 100%;
+}
+
+content {
+    padding-bottom: 90px;
+}
+
+header{
+    width: 80%;
+    padding: 15px 10%;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    border-bottom: 2px solid #000;
+}
+
+header .logo {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+header nav a:hover {text-decoration: underline}
+
+main {
+    width: 80%;
+    padding: 15px 10%;
+    margin: 50px 0;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-top: 150px;
+    text-align: center;
+    width: 100%;
+    padding: 25px 0;
+    color: #fff;
+    background: #333;
+    border-top: 2px solid #000;
+}
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-image: url("/images/1.png"); /* Замените "your-image.jpg" на имя вашего изображения */
+    background-repeat: no-repeat;
+    background-size: cover; /* Замените на 'cover' или 'contain' в зависимости от ваших требований */
+    background-position: center; /* Добавьте эту строку для размещения изображения по центру */
+}
