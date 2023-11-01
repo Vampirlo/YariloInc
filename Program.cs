@@ -9,6 +9,28 @@ namespace YariloInc
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
 
+			// Получаем конфигурацию Kestrel из appsettings.json
+			var configuration = builder.Configuration;
+			var kestrelOptions = configuration.GetSection("Kestrel");
+
+			// Получаем путь к сертификату и приватному ключу
+			var certificatePath = kestrelOptions.GetValue<string>("Endpoints:Https:Certificate:Path");
+			//var keyPath = kestrelOptions.GetValue<string>("Endpoints:Https:Certificate:KeyPath");
+
+			var url = kestrelOptions.GetValue<string>("Endpoints:Https:Url");
+			var endpoint = new System.Net.IPEndPoint(System.Net.IPAddress.Any, int.Parse(url.Split(":")[2]));
+			var pass = kestrelOptions.GetValue<string>("Endpoints:Https:Certificate:Password");
+			// Настраиваем Kestrel
+			builder.WebHost.ConfigureKestrel(options =>
+			{
+				options.Listen(endpoint, listenOptions =>
+				{
+					listenOptions.UseHttps(certificatePath, pass);
+				});
+			});
+
+			/////////////////////
+
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -32,5 +54,6 @@ namespace YariloInc
 
 			app.Run();
 		}
+
 	}
 }

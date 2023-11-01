@@ -101,5 +101,47 @@ namespace YariloInc.Controllers
             var fileName = "Шаблоны морских кораблей.docx";
             return File(memory, GetContentType(filePath), fileName);
         }
+        public IActionResult GetFileArmaModListWagner()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", "wagner.html");
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+
+            var fileName = "wagner.html";
+            return File(memory, GetContentType(filePath), fileName);
+        }
+        public IActionResult GetFileArmaModListAntistasiPLUS()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", "antistasiPLUS.html");
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+
+            var fileName = "antistasiPLUS.html";
+            return File(memory, GetContentType(filePath), fileName);
+        }
+        public IActionResult GetFileArmaModListDynamicSpecialOps()
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", "DynamicSpecialOps.html");
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+
+            var fileName = "DynamicSpecialOps.html";
+            return File(memory, GetContentType(filePath), fileName);
+        }
     }
 }
